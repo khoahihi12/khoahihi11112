@@ -187,10 +187,30 @@
         const modal = document.getElementById("modal");
 
         noBtn.addEventListener("mouseover", () => {
+            const currentTop = parseInt(noBtn.style.top || 0);
+            const currentLeft = parseInt(noBtn.style.left || 0);
+
+            const offsetY = Math.random() * 100 - 25; 
+            const offsetX = Math.random() * 100 - 25; 
+
             noBtn.style.position = "absolute";
-            noBtn.style.top = `${Math.min(Math.random() * 200, window.innerHeight - 50)}px`;
-            noBtn.style.left = `${Math.min(Math.random() * 300, window.innerWidth - 100)}px`;
-            noBtn.style.transition = "top 0.5s, left 0.5s";
+            noBtn.style.top = `${Math.min(Math.max(currentTop + offsetY, 0), window.innerHeight - 50)}px`;
+            noBtn.style.left = `${Math.min(Math.max(currentLeft + offsetX, 0), window.innerWidth - 100)}px`;
+            noBtn.style.transition = "top 0.2s, left 0.2s"; 
+        });
+
+        
+        noBtn.addEventListener("click", () => {
+            const currentTop = parseInt(noBtn.style.top || 0);
+            const currentLeft = parseInt(noBtn.style.left || 0);
+
+            const offsetY = Math.random() * 100 - 25; 
+            const offsetX = Math.random() * 100 - 25; 
+
+            noBtn.style.position = "absolute";
+            noBtn.style.top = `${Math.min(Math.max(currentTop + offsetY, 0), window.innerHeight - 50)}px`;
+            noBtn.style.left = `${Math.min(Math.max(currentLeft + offsetX, 0), window.innerWidth - 100)}px`;
+            noBtn.style.transition = "top 0.15s, left 0.15s"; 
         });
 
         yesBtn.addEventListener("click", () => {
@@ -199,7 +219,6 @@
                 modal.style.display = "none";
             }, 2000);
         });
-
         document.addEventListener("click", function (event) {
             const heart = document.createElement("div");
             heart.className = "heart";
