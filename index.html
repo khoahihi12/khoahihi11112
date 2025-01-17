@@ -160,6 +160,16 @@
     </audio>
 
     <script>
+        document.body.addEventListener('click', (event) => {
+    if (event.target.tagName === 'A') {
+        return; 
+    }
+
+    if (!backgroundMusic.played.length) {
+        backgroundMusic.play();
+        centerMusicButton.classList.add('playing');
+    }
+});
         const centerMusicButton = document.getElementById('centerMusicButton');
         const backgroundMusic = document.getElementById('backgroundMusic');
 
