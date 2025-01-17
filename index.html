@@ -11,27 +11,31 @@
             text-align: center;
             margin: 0;
             padding: 0;
-             user-select: none;
+            user-select: none;
         }
+
         .container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 80vh;
-             user-select: none;
+            user-select: none;
         }
+
         table {
             background-color: #ffc0cb;
             border: 2px solid #ff69b4;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-             user-select: none;
+            user-select: none;
         }
+
         th, td {
             padding: 10px;
             border-bottom: 1px solid #ff69b4;
         }
+
         button {
             background-color: #ff69b4;
             color: white;
@@ -42,65 +46,155 @@
             cursor: pointer;
             border-radius: 5px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-             user-select: none;
+            user-select: none;
         }
-        button:hover {
-            background-color: #ff1493;
-             user-select: none;
-        }
+
+            button:hover {
+                background-color: #ff1493;
+                user-select: none;
+            }
+
         .heart {
-    position: absolute;
-    color: red;
-    font-size: 20px;
-    animation: float 1.2s ease-out forwards;
-    user-select: none;
-    pointer-events: none;
-     user-select: none;
-}
+            position: absolute;
+            color: red;
+            font-size: 20px;
+            animation: float 1.2s ease-out forwards;
+            user-select: none;
+            pointer-events: none;
+            user-select: none;
+        }
 
-@keyframes float {
-    0% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+        @keyframes float {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
 
-    100% {
-        opacity: 0;
-        transform: translateY(-100px) scale(1.5);
-    }
-}
-footer {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    text-align: center;
-    color: black;
-    font-size: 1rem;
-}
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(1.5);
+            }
+        }
 
-    footer a {
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-        transition: color 0.3s, font-weight 0.3s;
-    }
+        footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            color: black;
+            font-size: 1rem;
+        }
 
-        footer a:hover {
-            font-weight: bold;
-            color: #4caf50;
+            footer a {
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                transition: color 0.3s, font-weight 0.3s;
+            }
+
+                footer a:hover {
+                    font-weight: bold;
+                    color: #4caf50;
+                }
+
+
+        /* Nút âm nhạc giữa màn hình */
+        .center-music-button {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%); /* Căn chỉnh giữa màn hình */
+            width: 100px; /* Kích thước nút */
+            height: 100px; /* Kích thước nút */
+            background-color: #FF6347; /* Màu cam */
+            color: white;
+            font-size: 24px; /* Kích thước icon 🎵 */
+            border: none;
+            border-radius: 50%; /* Làm nút hình tròn */
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+            display: flex; /* Sử dụng flexbox */
+            flex-direction: column; /* Đặt nội dung theo cột */
+            justify-content: center; /* Căn giữa nội dung theo chiều ngang */
+            align-items: center; /* Căn giữa nội dung theo chiều dọc */
+        }
+
+            .center-music-button:hover {
+                background-color: #FFA07A; /* Màu cam nhạt hơn khi hover */
+            }
+
+        /* Biểu tượng âm nhạc 🎵 */
+        .icon {
+            font-size: 36px; /* Kích thước icon lớn hơn */
+        }
+
+        /* Dòng chữ nhỏ bên dưới */
+        .text {
+            font-size: 12px; /* Kích thước chữ nhỏ */
+            margin-top: 4px; /* Khoảng cách giữa icon và chữ */
+            text-align: center; /* Căn giữa chữ */
+        }
+
+        /* Hiệu ứng khi nhạc đang phát */
+        .center-music-button.playing {
+            animation: rotate 2s linear infinite; /* Hiệu ứng xoay */
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: translateX(-50%) rotate(0deg); /* Giữ vị trí giữa màn hình */
+            }
+
+            100% {
+                transform: translateX(-50%) rotate(360deg); /* Xoay 360 độ */
+            }
         }
     </style>
 </head>
 <body>
-<footer>
-    © 2024 Design by <a>Ng Khoa</a>
-</footer>
+    <button class="center-music-button" id="centerMusicButton">
+        <span class="icon">🎵</span>
+        <span class="text">Nhấn để tạm dừng</span>
+    </button>
+
+    <audio id="backgroundMusic" loop>
+        <source src="your-audio-file.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const centerMusicButton = document.getElementById('centerMusicButton');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+
+        document.body.addEventListener('click', (event) => {
+            if (!backgroundMusic.played.length) {
+                backgroundMusic.play();
+                centerMusicButton.classList.add('playing'); 
+            }
+        });
+
+        centerMusicButton.addEventListener('click', (event) => {
+            event.stopPropagation(); 
+            if (backgroundMusic.paused) {
+                backgroundMusic.play();
+                centerMusicButton.classList.add('playing'); 
+            } else {
+                backgroundMusic.pause();
+                centerMusicButton.classList.remove('playing'); 
+            }
+        });
+    </script>
+    <footer>
+        © 2024 Design by <a>Ng Khoa</a>
+    </footer>
     <div class="container">
         <table id="contentTable">
             <tr>
-                <th>Đầu tiên
+                <th>
+                    Lời đầu tiên
 
-</th>
+                </th>
             </tr>
             <tr>
                 <td>Chào em ngày mới, mong em sẽ luôn mỉm cười rạng rỡ và đón nhận mọi điều ngọt ngào nhất trong hôm nay. 🌹✨</td>
@@ -121,23 +215,24 @@ footer {
             } else if (clickCount === 2) {
                 table.innerHTML = '<tr><th>Lời nói cuối</th></tr><tr><td>Đây là sản phẩm, cũng như tâm huyết mà tôi dành trọn cho em, mong em sẽ cảm nhận được tình cảm chân thành và những điều tốt đẹp mà tôi muốn gửi gắm.🌹</td></tr>';
             } else if (clickCount === 3) {
-                window.location.href = 'tỏ tình.html'; 
+                window.location.href = 'tỏ tình.html';
             }
         }
-         document.addEventListener("click", function (event) {
-     const heart = document.createElement("div");
-     heart.className = "heart";
-     heart.innerText = "❤️";
+        document.addEventListener("click", function (event) {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerText = "❤️";
 
-     heart.style.left = `${event.clientX}px`;
-     heart.style.top = `${event.clientY}px`;
+            heart.style.left = `${event.clientX}px`;
+            heart.style.top = `${event.clientY}px`;
 
-     document.body.appendChild(heart);
+            document.body.appendChild(heart);
 
-     setTimeout(() => {
-         heart.remove();
-     }, 1200);
- });
+            setTimeout(() => {
+                heart.remove();
+            }, 1200);
+        });
     </script>
 </body>
 </html>
+
