@@ -98,56 +98,52 @@
                 }
 
 
-        /* Nút âm nhạc giữa màn hình */
         .center-music-button {
             position: absolute;
             top: 20px;
             left: 50%;
-            transform: translateX(-50%); /* Căn chỉnh giữa màn hình */
-            width: 100px; /* Kích thước nút */
-            height: 100px; /* Kích thước nút */
-            background-color: #FF6347; /* Màu cam */
+            transform: translateX(-50%); 
+            width: 100px; 
+            height: 100px; 
+            background-color: #FF6347; 
             color: white;
-            font-size: 24px; /* Kích thước icon 🎵 */
+            font-size: 24px; 
             border: none;
-            border-radius: 50%; /* Làm nút hình tròn */
+            border-radius: 50%; 
             cursor: pointer;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             transition: background-color 0.3s, transform 0.3s;
-            display: flex; /* Sử dụng flexbox */
-            flex-direction: column; /* Đặt nội dung theo cột */
-            justify-content: center; /* Căn giữa nội dung theo chiều ngang */
-            align-items: center; /* Căn giữa nội dung theo chiều dọc */
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
         }
 
             .center-music-button:hover {
-                background-color: #FFA07A; /* Màu cam nhạt hơn khi hover */
+                background-color: #FFA07A; 
             }
 
-        /* Biểu tượng âm nhạc 🎵 */
         .icon {
-            font-size: 36px; /* Kích thước icon lớn hơn */
+            font-size: 36px; 
         }
 
-        /* Dòng chữ nhỏ bên dưới */
         .text {
-            font-size: 12px; /* Kích thước chữ nhỏ */
-            margin-top: 4px; /* Khoảng cách giữa icon và chữ */
-            text-align: center; /* Căn giữa chữ */
+            font-size: 12px; 
+            margin-top: 4px; 
+            text-align: center; 
         }
 
-        /* Hiệu ứng khi nhạc đang phát */
         .center-music-button.playing {
-            animation: rotate 2s linear infinite; /* Hiệu ứng xoay */
+            animation: rotate 2s linear infinite; 
         }
 
         @keyframes rotate {
             0% {
-                transform: translateX(-50%) rotate(0deg); /* Giữ vị trí giữa màn hình */
+                transform: translateX(-50%) rotate(0deg); 
             }
 
             100% {
-                transform: translateX(-50%) rotate(360deg); /* Xoay 360 độ */
+                transform: translateX(-50%) rotate(360deg);
             }
         }
     </style>
@@ -186,7 +182,7 @@
         });
     </script>
     <footer>
-        © 2024 Design by <a>Ng Khoa</a>
+        © 2024 Design by <a href="https://www.facebook.com/khoangdangg/" onclick="event.stopPropagation()">Ng Khoa</a>
     </footer>
     <div class="container">
         <table id="contentTable">
@@ -235,4 +231,3 @@
     </script>
 </body>
 </html>
-
