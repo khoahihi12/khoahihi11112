@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Dễ Thương</title>
+    <style>
+        body {
+            background-color: #ffe4e1;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+             user-select: none;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+             user-select: none;
+        }
+        table {
+            background-color: #ffc0cb;
+            border: 2px solid #ff69b4;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+             user-select: none;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ff69b4;
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+             user-select: none;
+        }
+        button:hover {
+            background-color: #ff1493;
+             user-select: none;
+        }
+        .heart {
+    position: absolute;
+    color: red;
+    font-size: 20px;
+    animation: float 1.2s ease-out forwards;
+    user-select: none;
+    pointer-events: none;
+     user-select: none;
+}
+
+@keyframes float {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-100px) scale(1.5);
+    }
+}
+footer {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    color: black;
+    font-size: 1rem;
+}
+
+    footer a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s, font-weight 0.3s;
+    }
+
+        footer a:hover {
+            font-weight: bold;
+            color: #4caf50;
+        }
+    </style>
+</head>
+<body>
+<footer>
+    © 2024 Design by <a>Ng Khoa</a>
+</footer>
+    <div class="container">
+        <table id="contentTable">
+            <tr>
+                <th>Đầu tiên
+
+</th>
+            </tr>
+            <tr>
+                <td>Chào em ngày mới, mong em sẽ luôn mỉm cười rạng rỡ và đón nhận mọi điều ngọt ngào nhất trong hôm nay." 🌹✨</td>
+            </tr>
+        </table>
+    </div>
+    <button onclick="changeContent()">Nhấn vào tôi</button>
+
+    <script>
+        let clickCount = 0;
+
+        function changeContent() {
+            const table = document.getElementById('contentTable');
+            clickCount++;
+
+            if (clickCount === 1) {
+                table.innerHTML = '<tr><th>Tiếp theo đây</th></tr><tr><td>Nếu em đã nhấn vào đây, xin hãy để từng khoảnh khắc này trôi qua thật nhẹ nhàng và lắng đọng, để em cảm nhận được sự ấm áp và tình yêu từ những lời chúc ngọt ngào. Hãy để ngày hôm nay trở thành một chương mới đầy đẹp đẽ trong câu chuyện của chúng ta. 🌷💫</td></tr>';
+            } else if (clickCount === 2) {
+                table.innerHTML = '<tr><th>Lời nói cuối</th></tr><tr><td>"Đây là sản phẩm, cũng như tâm huyết mà tôi dành trọn cho em, mong em sẽ cảm nhận được tình cảm chân thành và những điều tốt đẹp mà tôi muốn gửi gắm." 🌹</td></tr>';
+            } else if (clickCount === 3) {
+                window.location.href = 'tỏ tình.html'; // Thay đường dẫn bạn muốn nhảy tới
+            }
+        }
+         document.addEventListener("click", function (event) {
+     const heart = document.createElement("div");
+     heart.className = "heart";
+     heart.innerText = "❤️";
+
+     heart.style.left = `${event.clientX}px`;
+     heart.style.top = `${event.clientY}px`;
+
+     document.body.appendChild(heart);
+
+     setTimeout(() => {
+         heart.remove();
+     }, 1200);
+ });
+    </script>
+</body>
+</html>
